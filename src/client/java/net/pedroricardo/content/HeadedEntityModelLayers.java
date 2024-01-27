@@ -69,8 +69,6 @@ public class HeadedEntityModelLayers {
     public static final EntityModelLayer CAVE_SPIDER_HEAD = registerMain("cave_spider_head", () -> SpiderHeadEntityModel.getTexturedModelData(-1.2f));
     public static final EntityModelLayer CAVE_SPIDER_EYES = register("cave_spider_head", "eyes", () -> SpiderHeadEntityModel.getTexturedModelData(-1.2f));
     public static final EntityModelLayer BLAZE_HEAD = registerMain("blaze_head", SkullEntityModel::getSkullTexturedModelData);
-    public static final EntityModelLayer BREEZE_HEAD = registerMain("breeze_head", BreezeHeadEntityModel::getTexturedModelData);
-    public static final EntityModelLayer BREEZE_EYES = register("breeze_head", "eyes", BreezeHeadEntityModel::getEyesTexturedModelData);
     public static final EntityModelLayer CAMEL_HEAD = registerMain("camel_head", CamelHeadEntityModel::getTexturedModelData);
     public static final EntityModelLayer RABBIT_HEAD = registerMain("rabbit_head", RabbitHeadEntityModel::getTexturedModelData);
     public static final EntityModelLayer RAVAGER_HEAD = registerMain("ravager_head", RavagerHeadEntityModel::getTexturedModelData);

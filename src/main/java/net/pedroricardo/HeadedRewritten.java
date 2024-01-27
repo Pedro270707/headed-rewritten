@@ -54,7 +54,6 @@ public class HeadedRewritten implements ModInitializer {
 		TextureToServerHeadMap.addHead(HeadURLs.ANGRY_BEE, "Angry Bee", SoundEvents.ENTITY_BEE_LOOP_AGGRESSIVE.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.ANGRY_POLLINATED_BEE, "Angry Pollinated Bee", SoundEvents.ENTITY_BEE_LOOP_AGGRESSIVE.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.BLAZE, "Blaze", SoundEvents.ENTITY_BLAZE_AMBIENT.getId().toString());
-		TextureToServerHeadMap.addHead(HeadURLs.BREEZE, "Breeze", SoundEvents.ENTITY_BREEZE_IDLE_GROUND.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.CAMEL, "Camel", SoundEvents.ENTITY_CAMEL_AMBIENT.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.ALL_BLACK_CAT, "Black Cat", SoundEvents.ENTITY_CAT_AMBIENT.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.BLACK_CAT, "Tuxedo Cat", SoundEvents.ENTITY_CAT_AMBIENT.getId().toString());

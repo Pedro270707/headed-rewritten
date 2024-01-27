@@ -821,12 +821,6 @@ public class HeadedLootTable {
             }
         });
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            if (source.isBuiltin() && EntityType.BREEZE.getLootTableId().equals(id)) {
-                tableBuilder.pool(LootPool.builder().with(HeadedServerHead.entry(HeadURLs.BREEZE))
-                        .conditionally(KilledByChargedCreeperLootCondition.builder()));
-            }
-        });
-        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
             if (source.isBuiltin() && EntityType.CAMEL.getLootTableId().equals(id)) {
                 tableBuilder.pool(LootPool.builder().with(HeadedServerHead.entry(HeadURLs.CAMEL))
                         .conditionally(KilledByChargedCreeperLootCondition.builder()));
