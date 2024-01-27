@@ -1,5 +1,6 @@
 package net.pedroricardo.content;
 
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.SkullBlockEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.item.ItemStack;
@@ -19,7 +20,7 @@ import java.util.function.Function;
 public class HeadedHead {
     private final String originalTexture;
     private final Function<EntityModelLoader, SkullBlockEntityModel> modelFunction;
-    private final Identifier texture;
+    private final RenderLayer renderLayer;
     private final Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers;
     @Nullable
     private final String name;
@@ -28,25 +29,25 @@ public class HeadedHead {
 
     private final boolean addToItemGroup;
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, Identifier texture, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers, boolean addToItemGroup) {
+    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers, boolean addToItemGroup) {
         this.originalTexture = originalTexture;
         this.modelFunction = modelFunction;
-        this.texture = texture;
+        this.renderLayer = renderLayer;
         this.name = name;
         this.featureRenderers = featureRenderers;
         this.noteBlockSound = noteBlockSound;
         this.addToItemGroup = addToItemGroup;
     }
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, Identifier texture, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers) {
-        this(originalTexture, modelFunction, texture, name, noteBlockSound, featureRenderers, true);
+    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers) {
+        this(originalTexture, modelFunction, renderLayer, name, noteBlockSound, featureRenderers, true);
     }
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, Identifier texture, @Nullable String name, @Nullable String noteBlockSound) {
-        this(originalTexture, modelFunction, texture, name, noteBlockSound, Collections.emptyList());
+    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound) {
+        this(originalTexture, modelFunction, renderLayer, name, noteBlockSound, Collections.emptyList());
     }
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, Identifier texture, @Nullable String name, @Nullable String noteBlockSound, boolean addToItemGroup) {
+    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer texture, @Nullable String name, @Nullable String noteBlockSound, boolean addToItemGroup) {
         this(originalTexture, modelFunction, texture, name, noteBlockSound, Collections.emptyList(), addToItemGroup);
     }
 
@@ -58,8 +59,8 @@ public class HeadedHead {
         return this.modelFunction.apply(modelLoader);
     }
 
-    public Identifier getTexture() {
-        return this.texture;
+    public RenderLayer getRenderLayer() {
+        return this.renderLayer;
     }
 
     public Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> getFeatureRenderers() {

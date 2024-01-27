@@ -28,7 +28,6 @@ import java.util.function.Function;
 
 @Mixin(SkullBlockEntityRenderer.class)
 public class RenderHeadedHeadMixin {
-
     @ModifyArg(method = "render(Lnet/minecraft/block/entity/SkullBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/SkullBlockEntityRenderer;renderSkull(Lnet/minecraft/util/math/Direction;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/client/render/block/entity/SkullBlockEntityModel;Lnet/minecraft/client/render/RenderLayer;)V"), index = 6)
     private SkullBlockEntityModel headedrewritten$replaceModel(SkullBlockEntityModel model, @Local(ordinal = 0) SkullBlock.SkullType skullType, @Local(ordinal = 0) SkullBlockEntity blockEntity) {
         HeadedContext.currentProfile = blockEntity.getOwner();
@@ -41,7 +40,7 @@ public class RenderHeadedHeadMixin {
     @Inject(method = "getRenderLayer", at = @At(value = "HEAD"), cancellable = true)
     private static void headedrewritten$replaceTexture(SkullBlock.SkullType type, GameProfile profile, CallbackInfoReturnable<RenderLayer> cir) {
         if (type == SkullBlock.Type.PLAYER && profile != null && profile.getProperties().containsKey("textures") && TextureToHeadMap.MAP.containsKey(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(profile).textureUrl())) {
-            cir.setReturnValue(RenderLayer.getEntityCutoutNoCull(TextureToHeadMap.MAP.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(profile).textureUrl()).getTexture()));
+            cir.setReturnValue(TextureToHeadMap.MAP.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(profile).textureUrl()).getRenderLayer());
         }
     }
 
