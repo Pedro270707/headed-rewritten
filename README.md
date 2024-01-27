@@ -14,6 +14,9 @@ If Headed Rewritten is installed on the server, players with Headed Rewritten in
 
 Also, adding Headed Rewritten to a server will make mobs killed by a charged creeper drop their heads.
 
+### Credits
+Thanks to Vanilla Tweaks for the head textures for when someone doesn't have Headed Rewritten.
+
 ### Developers
 #### Client
 To add a head to the client (for rendering), call `TextureToHeadMap.addHeadNotInGroup()`. The first parameter is the texture whose head will be replaced (the string in `Properties:{textures:[{Value:"String"}]}` is JSON encoded in Base64, so you'll have to decode that in order to get the texture).
