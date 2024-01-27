@@ -1,0 +1,14 @@
+{
+  "required": false,
+  "package": "net.pedroricardo.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "TickPlayerHeadMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "server": [
+    "ServerHeadCollisionMixin"
+  ]
+}

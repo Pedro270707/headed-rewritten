@@ -1,0 +1,15 @@
+{
+  "required": false,
+  "package": "net.pedroricardo.mixin.client",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "HeadCollisionMixin",
+    "RenderHeadedHeadItemMixin",
+    "RenderHeadedHeadMixin",
+    "RenderHeadedHeadOnHeadMixin",
+    "WallHeadCollisionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

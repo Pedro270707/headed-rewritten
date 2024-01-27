@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "headed-rewritten",
+	"version": "${version}",
+	"name": "Headed Rewritten",
+	"description": "A mod that adds more mob heads in a vanilla-compatible way",
+	"authors": [
+		"Pedro Ricardo"
+	],
+	"contact": {
+		"homepage": "https://pedroricardo.net/",
+		"sources": "https://github.com/Pedro270707/headed-rewritten"
+	},
+	"license": "HPL-v1",
+	"icon": "assets/headed-rewritten/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.pedroricardo.HeadedRewritten"
+		],
+		"client": [
+			"net.pedroricardo.HeadedRewrittenClient"
+		]
+	},
+	"mixins": [
+		"headed-rewritten.mixins.json",
+		{
+			"config": "headed-rewritten.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*",
+		"yet_another_config_lib_v3": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

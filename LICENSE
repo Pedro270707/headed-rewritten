@@ -1,0 +1,33 @@
+Headed Public License v1
+
+Copyright (c) 2024 Pedro Ricardo
+
+## Definitions
+- "Mod" refers to the software downloaded or in this repository.
+- "Game" refers to the original software upon which the Mod was developed.
+- "Assets" refers to any piece of code, image, or plain text in the Mod.
+- "Holder" refers to the holder of the copyright.
+
+## Redistribution Conditions
+1. You are only allowed to redistribute the Mod or its Assets under any of the following sets of conditions:
+   1.1. **Set 1:**
+       - Redistribution is limited to fewer than 50 people.
+       - The redistribution is not modified in any way, except for the case where the change is a removal of profanity.
+   1.2. **Set 2:**
+       - The distribution is done exclusively through official links shared by the Holder. An official link is one provided by the copyright Holder through their designated website, repository, or other authorized channels.
+   1.3. **Set 3:**
+       - You have explicit permission from the Holder. Any further conditions given by the Holder for redistribution must be followed.
+   1.4. **Set 4:**
+       - You donate $50 to Wikimedia Foundation to help support Wikipedia for each person with access to your redistribution.
+
+## License Preservation
+2. You are not allowed to modify or remove this license from any redistribution.
+
+## The Game
+3. The Holder may not hold the rights to the Game, and the latter is subject to different terms and conditions.
+
+## Reserved Rights
+4. Any rights not listed in this license are reserved to the Holder.
+
+## Disclaimer
+THIS SOFTWARE IS PROVIDED BY THE HOLDER "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, ARE DISCLAIMED. IN NO EVENT SHALL THE HOLDER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
