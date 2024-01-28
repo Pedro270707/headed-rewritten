@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.minecraft.util.Identifier;
 import net.pedroricardo.content.features.HeadedFeatureRenderer;
 import org.apache.commons.codec.binary.Base64;
 import org.jetbrains.annotations.Nullable;
