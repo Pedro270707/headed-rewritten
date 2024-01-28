@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Environment(EnvType.SERVER)
-@Mixin(SkullBlock.class)
-public class ServerHeadCollisionMixin {
+@Mixin(WallSkullBlock.class)
+public class ServerWallHeadCollisionMixin {
     @Inject(method = "getOutlineShape", at = @At("HEAD"), cancellable = true)
     private void getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context, CallbackInfoReturnable<VoxelShape> cir) {
         if (((AbstractSkullBlock)state.getBlock()).getSkullType() == SkullBlock.Type.PLAYER) {
