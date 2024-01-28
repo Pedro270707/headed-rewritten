@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.Random;
 
 public class HeadedServerHead {
     private final String originalTexture;
@@ -49,6 +50,8 @@ public class HeadedServerHead {
         list.add(textureValueCompound);
         propertyTextures.put("textures", list);
         skullOwner.put("Properties", propertyTextures);
+        Random random = new Random(this.getName() != null ? this.getName().hashCode() : 0);
+        skullOwner.putIntArray("Id", new int[]{random.nextInt(Integer.MIN_VALUE, Integer.MAX_VALUE), random.nextInt(Integer.MIN_VALUE, Integer.MAX_VALUE), random.nextInt(Integer.MIN_VALUE, Integer.MAX_VALUE), random.nextInt(Integer.MIN_VALUE, Integer.MAX_VALUE)});
         itemStack.setSubNbt("SkullOwner", skullOwner);
         if (this.getNoteBlockSound() != null) {
             NbtCompound noteBlockSound = new NbtCompound();

@@ -1,12 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package net.pedroricardo.content.loottable;
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.loot.condition.LootCondition;
@@ -14,12 +11,12 @@ import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameter;
 import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.util.JsonSerializer;
 
 import java.util.Set;
 
 public class KilledByChargedCreeperLootCondition implements LootCondition {
     static final KilledByChargedCreeperLootCondition INSTANCE = new KilledByChargedCreeperLootCondition();
-    public static final Codec<KilledByChargedCreeperLootCondition> CODEC = Codec.unit(INSTANCE);
 
     private KilledByChargedCreeperLootCondition() {
     }
@@ -41,7 +38,7 @@ public class KilledByChargedCreeperLootCondition implements LootCondition {
      * Then, if there is another pool with this
      * condition, it won't be triggered due to
      * shouldDropHead() being false.
-     */
+     * */
     public boolean test(LootContext lootContext) {
         if (lootContext.hasParameter(LootContextParameters.KILLER_ENTITY)) {
             Entity killer = lootContext.get(LootContextParameters.KILLER_ENTITY);
@@ -54,7 +51,19 @@ public class KilledByChargedCreeperLootCondition implements LootCondition {
         return false;
     }
 
-    public static Builder builder() {
+    public static LootCondition.Builder builder() {
         return () -> INSTANCE;
+    }
+
+    public static class Serializer implements JsonSerializer<KilledByChargedCreeperLootCondition> {
+        public Serializer() {
+        }
+
+        public void toJson(JsonObject jsonObject, KilledByChargedCreeperLootCondition killedByPlayerLootCondition, JsonSerializationContext jsonSerializationContext) {
+        }
+
+        public KilledByChargedCreeperLootCondition fromJson(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
+            return KilledByChargedCreeperLootCondition.INSTANCE;
+        }
     }
 }
