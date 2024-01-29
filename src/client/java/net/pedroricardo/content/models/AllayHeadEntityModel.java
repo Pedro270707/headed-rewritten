@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.TexturedModelData;
+import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.block.entity.SkullBlockEntityModel;
 import net.minecraft.client.render.entity.model.AllayEntityModel;
@@ -15,10 +16,12 @@ import org.joml.Vector3f;
 public class AllayHeadEntityModel extends SkullBlockEntityModel implements HeadedRewrittenModel {
     private final ModelPart root;
     private final ModelPart head;
+    private final boolean glowy;
 
-    public AllayHeadEntityModel(ModelPart root) {
+    public AllayHeadEntityModel(ModelPart root, boolean glowy) {
         this.root = root.getChild(EntityModelPartNames.ROOT);
         this.head = this.root.getChild(EntityModelPartNames.HEAD);
+        this.glowy = glowy;
     }
 
     public static TexturedModelData getTexturedModelData() {
@@ -36,6 +39,6 @@ public class AllayHeadEntityModel extends SkullBlockEntityModel implements Heade
 
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
         matrices.translate(0.0F, 0.25F, 0.0F);
-        this.head.render(matrices, vertices, light, overlay, red, green, blue, alpha);
+        this.head.render(matrices, vertices, this.glowy ? LightmapTextureManager.MAX_LIGHT_COORDINATE : light, overlay, red, green, blue, alpha);
     }
 }
