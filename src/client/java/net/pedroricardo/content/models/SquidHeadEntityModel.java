@@ -3,6 +3,7 @@ package net.pedroricardo.content.models;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.block.entity.SkullBlockEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
@@ -13,10 +14,12 @@ import org.joml.Vector3f;
 public class SquidHeadEntityModel extends SkullBlockEntityModel implements HeadedRewrittenModel {
     private final ModelPart root;
     private final ModelPart body;
+    private final boolean glowy;
 
-    public SquidHeadEntityModel(ModelPart root) {
+    public SquidHeadEntityModel(ModelPart root, boolean glowy) {
         this.root = root;
         this.body = this.root.getChild(EntityModelPartNames.BODY);
+        this.glowy = glowy;
     }
 
     public static TexturedModelData getTexturedModelData() {
@@ -36,6 +39,6 @@ public class SquidHeadEntityModel extends SkullBlockEntityModel implements Heade
     }
 
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-        this.body.render(matrices, vertices, light, overlay, red, green, blue, alpha);
+        this.body.render(matrices, vertices, this.glowy ? LightmapTextureManager.MAX_LIGHT_COORDINATE : light, overlay, red, green, blue, alpha);
     }
 }
