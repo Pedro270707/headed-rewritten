@@ -140,6 +140,8 @@ public class HeadURLs {
     public static final String FISHERMAN_VILLAGER = "http://textures.minecraft.net/texture/d189fb4acd15d73ff2a58a88df0466ad9f4c154a2008e5c6265d5c2f07d39376";
     public static final String FLETCHER_VILLAGER = "http://textures.minecraft.net/texture/bf611f12e18ce44a57238eef1cae03cd9f730a7a45e0ec248f14ce84e9c48056";
     public static final String LIBRARIAN_VILLAGER = "http://textures.minecraft.net/texture/cdcaa574babb40ee0fa83f2fd5ea20cff31ffa272fe113588ceee469682128e7";
+    public static final String SHEPHERD_VILLAGER = "http://textures.minecraft.net/texture/2abf4e9154ac9271941c733eacc62dc9fc0a6dc1b5d67c78ca98afb5cb1be9b2";
+    public static final String WEAPONSMITH_VILLAGER = "http://textures.minecraft.net/texture/8476ffa410bbe7fa70909965a125f4a4e9a4fb1ce1b8b3c34bfb73aaffd4ce43";
     public static final String VINDICATOR = "http://textures.minecraft.net/texture/2dabafde27ee12b09865047aff6f183fdb64e04dae1c00ccbde04ad93dcc6c95";
     public static final String WANDERING_TRADER = "http://textures.minecraft.net/texture/5f1379a82290d7abe1efaabbc70710ff2ec02dd34ade386bc00c930c461cf932";
     public static final String WARDEN = "http://textures.minecraft.net/texture/b2f3879b737127485eb35ddee748d06cf914b193d97753ae34e92230842831fb";
@@ -160,5 +162,7 @@ public class HeadURLs {
     public static final String FISHERMAN_ZOMBIE_VILLAGER = "http://textures.minecraft.net/texture/6905d53fe4faeb0b315a6878c9ab81b4be52c31cd478c027f0d7ece9f6da8914";
     public static final String FLETCHER_ZOMBIE_VILLAGER = "http://textures.minecraft.net/texture/2ea26ac0e25498adada4ecea58bb4e76da32d5ca2de307efe5e4218fb7c5ef89";
     public static final String LIBRARIAN_ZOMBIE_VILLAGER = "http://textures.minecraft.net/texture/62211a1f409cca4249c70d20ca80399fa4844ea417458be988cc21eb4797375e";
+    public static final String SHEPHERD_ZOMBIE_VILLAGER = "http://textures.minecraft.net/texture/691391bef3a46ef267d3b7171086ba4c8d17f2a6b0f83fa2ac30efe914b7c249";
+    public static final String WEAPONSMITH_ZOMBIE_VILLAGER = "http://textures.minecraft.net/texture/4370894b5cc305d87aa08c3b4b08587db68ff29e7a3ef354cad6abca50e5528b";
     public static final String ZOMBIFIED_PIGLIN = "http://textures.minecraft.net/texture/2df03128b002a70708d6825ed6cf54ddf694b3766d78d5649030b1cb8b34c6fa";
 }
