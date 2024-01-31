@@ -164,6 +164,8 @@ public class HeadedRewritten implements ModInitializer {
 		TextureToServerHeadMap.addHead(HeadURLs.FISHERMAN_VILLAGER, "Fisherman Villager", SoundEvents.ENTITY_VILLAGER_WORK_FISHERMAN.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.FLETCHER_VILLAGER, "Fletcher Villager", SoundEvents.ENTITY_VILLAGER_WORK_FLETCHER.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.LIBRARIAN_VILLAGER, "Librarian Villager", SoundEvents.ENTITY_VILLAGER_WORK_LIBRARIAN.getId().toString());
+		TextureToServerHeadMap.addHead(HeadURLs.SHEPHERD_VILLAGER, "Shepherd Villager", SoundEvents.ENTITY_VILLAGER_WORK_SHEPHERD.getId().toString());
+		TextureToServerHeadMap.addHead(HeadURLs.WEAPONSMITH_VILLAGER, "Weaponsmith Villager", SoundEvents.ENTITY_VILLAGER_WORK_WEAPONSMITH.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.VINDICATOR, "Vindicator", SoundEvents.ENTITY_VINDICATOR_AMBIENT.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.WANDERING_TRADER, "Wandering Trader", SoundEvents.ENTITY_WANDERING_TRADER_AMBIENT.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.WARDEN, "Warden", SoundEvents.ENTITY_WARDEN_AMBIENT.getId().toString());
@@ -184,6 +186,8 @@ public class HeadedRewritten implements ModInitializer {
 		TextureToServerHeadMap.addHead(HeadURLs.FISHERMAN_ZOMBIE_VILLAGER, "Fisherman Zombie Villager", SoundEvents.ENTITY_ZOMBIE_VILLAGER_AMBIENT.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.FLETCHER_ZOMBIE_VILLAGER, "Fletcher Zombie Villager", SoundEvents.ENTITY_ZOMBIE_VILLAGER_AMBIENT.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.LIBRARIAN_ZOMBIE_VILLAGER, "Librarian Zombie Villager", SoundEvents.ENTITY_ZOMBIE_VILLAGER_AMBIENT.getId().toString());
+		TextureToServerHeadMap.addHead(HeadURLs.SHEPHERD_ZOMBIE_VILLAGER, "Shepherd Zombie Villager", SoundEvents.ENTITY_ZOMBIE_VILLAGER_AMBIENT.getId().toString());
+		TextureToServerHeadMap.addHead(HeadURLs.WEAPONSMITH_ZOMBIE_VILLAGER, "Weaponsmith Zombie Villager", SoundEvents.ENTITY_ZOMBIE_VILLAGER_AMBIENT.getId().toString());
 		TextureToServerHeadMap.addHead(HeadURLs.ZOMBIFIED_PIGLIN, "Zombified Piglin", SoundEvents.ENTITY_ZOMBIFIED_PIGLIN_AMBIENT.getId().toString());
 
 		S2CPlayChannelEvents.REGISTER.register(new Identifier(MOD_ID, MOD_ID), (handler, sender, server, channels) ->
