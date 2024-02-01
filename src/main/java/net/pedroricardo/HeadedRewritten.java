@@ -8,6 +8,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.pedroricardo.content.HeadURLs;
 import net.pedroricardo.content.HeadedRewrittenConfig;
+import net.pedroricardo.content.HeadedRewrittenConfigModel;
 import net.pedroricardo.content.TextureToServerHeadMap;
 import net.pedroricardo.content.loottable.HeadedLootConditionTypes;
 import net.pedroricardo.content.loottable.HeadedLootTable;
@@ -18,11 +19,12 @@ public class HeadedRewritten implements ModInitializer {
 	public static final String MOD_ID = "headed-rewritten";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static final HeadedRewrittenConfig CONFIG = HeadedRewrittenConfig.createAndLoad();
+
 	@Override
 	public void onInitialize() {
 		HeadedLootConditionTypes.init();
-		HeadedRewrittenConfig.HANDLER.load();
-		if (HeadedRewrittenConfig.HANDLER.instance().chargedCreeperDrops) {
+		if (CONFIG.chargedCreeperDrops()) {
 			HeadedLootTable.init();
 		}
 		TextureToServerHeadMap.addHead(HeadURLs.WHITE_SHEEP, "White Sheep", SoundEvents.ENTITY_SHEEP_AMBIENT.getId().toString());

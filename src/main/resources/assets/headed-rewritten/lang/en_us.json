@@ -1,3 +1,5 @@
 {
-  "itemGroup.headed-rewritten": "Headed Rewritten"
+  "itemGroup.headed-rewritten": "Headed Rewritten",
+  "text.config.headed-rewritten.option.chargedCreeperDrops": "Charged Creeper Drops",
+  "text.config.headed-rewritten.option.changeHeadCollisions": "Change Head Collisions"
 }
