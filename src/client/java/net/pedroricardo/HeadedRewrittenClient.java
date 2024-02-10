@@ -59,6 +59,7 @@ public class HeadedRewrittenClient implements ClientModInitializer {
 										textureURL = textureURL.replaceFirst("http://textures.minecraft.net/texture/", "");
 										String finalTextureURL = textureURL;
 										HeadedRewritten.CONFIG.allOptions().forEach((key, value) -> {
+											if (value.defaultValue().equals(finalTextureURL)) ((Option)value).set("-1");
 											if (value.value().equals(finalTextureURL)) ((Option)value).set(value.defaultValue());
 										});
 										HeadOptionArgumentType.getHeadOption(c, "head").set(textureURL);
