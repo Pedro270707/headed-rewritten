@@ -14,13 +14,14 @@ import net.pedroricardo.HeadedRewritten;
 import net.pedroricardo.HeadedRewrittenClient;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class HeadedCreativeTab {
     private static final RegistryKey<ItemGroup> ITEM_GROUP_REGISTRY_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(HeadedRewritten.MOD_ID, "headed_rewritten"));
     public static final ItemGroup ITEM_GROUP = Registry.register(Registries.ITEM_GROUP, ITEM_GROUP_REGISTRY_KEY, FabricItemGroup.builder().icon(() -> new ItemStack(Items.PLAYER_HEAD))
             .displayName(Text.translatable("itemGroup.headed-rewritten"))
             .entries((ctx, entries) -> {
-               for (Map.Entry<String, HeadedHead> entry : TextureToHeadMap.MAP.entrySet()) {
+               for (Map.Entry<Supplier<String>, HeadedHead> entry : TextureToHeadMap.MAP.entrySet()) {
                    if (entry.getValue().addToItemGroup()) entries.add(entry.getValue().toStack());
                }
             })
