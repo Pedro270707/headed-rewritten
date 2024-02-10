@@ -31,8 +31,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class WallHeadCollisionMixin {
     @Inject(method = "getOutlineShape", at = @At("HEAD"), cancellable = true)
     private void headedrewritten$getAccurateWallOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (HeadedRewritten.CONFIG.changeHeadCollisions() && world.getBlockEntity(pos) instanceof SkullBlockEntity blockEntity && blockEntity.getOwner() != null && blockEntity.getOwner().getProperties().containsKey("textures") && TextureToHeadMap.MAP.containsKey(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl())) {
-            SkullBlockEntityModel model = TextureToHeadMap.MAP.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl()).getModel(MinecraftClient.getInstance().getEntityModelLoader());
+        if (HeadedRewritten.CONFIG.changeHeadCollisions() && world.getBlockEntity(pos) instanceof SkullBlockEntity blockEntity && blockEntity.getOwner() != null && blockEntity.getOwner().getProperties().containsKey("textures") && TextureToHeadMap.contains(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl())) {
+            SkullBlockEntityModel model = TextureToHeadMap.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl()).getModel(MinecraftClient.getInstance().getEntityModelLoader());
             Vector3f boxSize;
             if (model instanceof HeadedRewrittenModel headedRewrittenModel) {
                 boxSize = headedRewrittenModel.getHeadSizeInPixels();
