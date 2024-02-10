@@ -31,16 +31,16 @@ public class RenderHeadedHeadMixin {
     @ModifyArg(method = "render(Lnet/minecraft/block/entity/SkullBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/SkullBlockEntityRenderer;renderSkull(Lnet/minecraft/util/math/Direction;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/client/render/block/entity/SkullBlockEntityModel;Lnet/minecraft/client/render/RenderLayer;)V"), index = 6)
     private SkullBlockEntityModel headedrewritten$replaceModel(SkullBlockEntityModel model, @Local(ordinal = 0) SkullBlock.SkullType skullType, @Local(ordinal = 0) SkullBlockEntity blockEntity) {
         HeadedContext.currentProfile = blockEntity.getOwner();
-        if (skullType == SkullBlock.Type.PLAYER && blockEntity.getOwner() != null && blockEntity.getOwner().getProperties().containsKey("textures") && TextureToHeadMap.MAP.containsKey(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl())) {
-            return TextureToHeadMap.MAP.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl()).getModel(MinecraftClient.getInstance().getEntityModelLoader());
+        if (skullType == SkullBlock.Type.PLAYER && blockEntity.getOwner() != null && blockEntity.getOwner().getProperties().containsKey("textures") && TextureToHeadMap.contains(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl())) {
+            return TextureToHeadMap.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(blockEntity.getOwner()).textureUrl()).getModel(MinecraftClient.getInstance().getEntityModelLoader());
         }
         return model;
     }
 
     @Inject(method = "getRenderLayer", at = @At(value = "HEAD"), cancellable = true)
     private static void headedrewritten$replaceTexture(SkullBlock.SkullType type, GameProfile profile, CallbackInfoReturnable<RenderLayer> cir) {
-        if (type == SkullBlock.Type.PLAYER && profile != null && profile.getProperties().containsKey("textures") && TextureToHeadMap.MAP.containsKey(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(profile).textureUrl())) {
-            cir.setReturnValue(TextureToHeadMap.MAP.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(profile).textureUrl()).getRenderLayer());
+        if (type == SkullBlock.Type.PLAYER && profile != null && profile.getProperties().containsKey("textures") && TextureToHeadMap.contains(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(profile).textureUrl())) {
+            cir.setReturnValue(TextureToHeadMap.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(profile).textureUrl()).getRenderLayer());
         }
     }
 
@@ -61,8 +61,8 @@ public class RenderHeadedHeadMixin {
 
     @Inject(method = "renderSkull", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V", shift = At.Shift.AFTER))
     private static void headedrewritten$renderFeatures(Direction direction, float yaw, float animationProgress, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, SkullBlockEntityModel model, RenderLayer renderLayer, CallbackInfo ci) {
-        if (HeadedContext.currentProfile != null && HeadedContext.currentProfile.getProperties().containsKey("textures") && TextureToHeadMap.MAP.containsKey(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(HeadedContext.currentProfile).textureUrl())) {
-            HeadedHead head = TextureToHeadMap.MAP.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(HeadedContext.currentProfile).textureUrl());
+        if (HeadedContext.currentProfile != null && HeadedContext.currentProfile.getProperties().containsKey("textures") && TextureToHeadMap.contains(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(HeadedContext.currentProfile).textureUrl())) {
+            HeadedHead head = TextureToHeadMap.get(MinecraftClient.getInstance().getSkinProvider().getSkinTextures(HeadedContext.currentProfile).textureUrl());
             HeadedContext.currentProfile = null;
             for (Function<EntityModelLoader, HeadedFeatureRenderer> featureRenderer : head.getFeatureRenderers()) {
                 featureRenderer.apply(MinecraftClient.getInstance().getEntityModelLoader()).render(direction, yaw, animationProgress, matrices, vertexConsumers, light);

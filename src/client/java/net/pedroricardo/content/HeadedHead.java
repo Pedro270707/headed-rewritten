@@ -17,9 +17,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class HeadedHead {
-    private final String originalTexture;
+    private final Supplier<String> originalTexture;
     private final Function<EntityModelLoader, SkullBlockEntityModel> modelFunction;
     private final RenderLayer renderLayer;
     private final Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers;
@@ -30,7 +31,7 @@ public class HeadedHead {
 
     private final boolean addToItemGroup;
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers, boolean addToItemGroup) {
+    public HeadedHead(Supplier<String> originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers, boolean addToItemGroup) {
         this.originalTexture = originalTexture;
         this.modelFunction = modelFunction;
         this.renderLayer = renderLayer;
@@ -40,19 +41,19 @@ public class HeadedHead {
         this.addToItemGroup = addToItemGroup;
     }
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers) {
+    public HeadedHead(Supplier<String> originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound, Collection<Function<EntityModelLoader, HeadedFeatureRenderer>> featureRenderers) {
         this(originalTexture, modelFunction, renderLayer, name, noteBlockSound, featureRenderers, true);
     }
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound) {
+    public HeadedHead(Supplier<String> originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer renderLayer, @Nullable String name, @Nullable String noteBlockSound) {
         this(originalTexture, modelFunction, renderLayer, name, noteBlockSound, Collections.emptyList());
     }
 
-    public HeadedHead(String originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer texture, @Nullable String name, @Nullable String noteBlockSound, boolean addToItemGroup) {
+    public HeadedHead(Supplier<String> originalTexture, Function<EntityModelLoader, SkullBlockEntityModel> modelFunction, RenderLayer texture, @Nullable String name, @Nullable String noteBlockSound, boolean addToItemGroup) {
         this(originalTexture, modelFunction, texture, name, noteBlockSound, Collections.emptyList(), addToItemGroup);
     }
 
-    public String getOriginalTexture() {
+    public Supplier<String> getOriginalTexture() {
         return this.originalTexture;
     }
 
@@ -85,7 +86,7 @@ public class HeadedHead {
         NbtCompound propertyTextures = new NbtCompound();
         NbtList list = new NbtList();
         NbtCompound textureValueCompound = new NbtCompound();
-        textureValueCompound.putString("Value", Base64.encodeBase64String(("{\"textures\":{\"SKIN\":{\"url\":\"" + this.getOriginalTexture() + "\"}}}").getBytes(StandardCharsets.UTF_8)));
+        textureValueCompound.putString("Value", Base64.encodeBase64String(("{\"textures\":{\"SKIN\":{\"url\":\"" + this.getOriginalTexture().get() + "\"}}}").getBytes(StandardCharsets.UTF_8)));
         list.add(textureValueCompound);
         propertyTextures.put("textures", list);
         skullOwner.put("Properties", propertyTextures);
