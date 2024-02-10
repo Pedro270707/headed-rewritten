@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "headed-rewritten",
-	"version": "${version}",
+	"version": "${mod_version}",
 	"name": "Headed Rewritten",
 	"description": "A mod that adds more mob heads in a vanilla-compatible way",
 	"authors": [

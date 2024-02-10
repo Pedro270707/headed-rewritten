@@ -47,7 +47,6 @@ public class HeadURLs {
     public static final String CHICKEN = "http://textures.minecraft.net/texture/42af6e5847eea099e1b0ab8c20a9e5f3c7190158bda54e28133d9b271ec0cb4b";
     public static final String COD = "http://textures.minecraft.net/texture/f246e19b32cf784549447e07b96072e1f656d78e93ccca5637485e6749734652";
     public static final String COW = "http://textures.minecraft.net/texture/63d621100fea5883922e78bb448056448c983e3f97841948a2da747d6b08b8ab";
-    public static final String CREPEER2159 = "http://textures.minecraft.net/texture/46c40f35e40519cf4176ccc65eecdc9571699a4975d03ccd4d58a6ceaba72c8b";
     public static final String DOLPHIN = "http://textures.minecraft.net/texture/8e9688b950d880b55b7aa2cfcd76e5a0fa94aac6d16f78e833f7443ea29fed3";
     public static final String DONKEY = "http://textures.minecraft.net/texture/4e25ee9273ad579d44bf406f6f6295586481ea198fd572076cd0c5882da7e6cc";
     public static final String DROWNED = "http://textures.minecraft.net/texture/c3f7ccf61dbc3f9fe9a6333cde0c0e14399eb2eea71d34cf223b3ace22051";
