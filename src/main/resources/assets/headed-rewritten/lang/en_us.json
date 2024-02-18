@@ -8,5 +8,6 @@
   "commands.headed-rewritten.headed-rewritten.set.item_is_not_a_head": "Item in player's hand is not a head",
   "commands.headed-rewritten.headed-rewritten.set.invalid_nbt": "Invalid NBT",
   "commands.headed-rewritten.headed-rewritten.set.success": "Set value of option %s to %s",
-  "argument.headed-rewritten.head_option.invalid": "Invalid head option %s"
+  "argument.headed-rewritten.head_option.invalid": "Invalid head option %s",
+  "block.minecraft.player_head.named_headed_rewritten": "%s Head"
 }
