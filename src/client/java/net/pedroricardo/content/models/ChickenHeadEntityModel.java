@@ -5,8 +5,10 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.block.entity.SkullBlockEntityModel;
+import net.minecraft.client.render.entity.model.ChickenEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
 import org.joml.Vector3f;
 
 @Environment(EnvType.CLIENT)
@@ -17,17 +19,12 @@ public class ChickenHeadEntityModel extends SkullBlockEntityModel implements Hea
 
     public ChickenHeadEntityModel(ModelPart root) {
         this.head = root.getChild(EntityModelPartNames.HEAD);
-        this.beak = this.head.getChild(EntityModelPartNames.BEAK);
-        this.wattle = this.head.getChild("red_thing"); // yes, mojang actually calls it a red thing
+        this.beak = root.getChild(EntityModelPartNames.BEAK);
+        this.wattle = root.getChild(ChickenEntityModel.RED_THING);
     }
 
     public static TexturedModelData getTexturedModelData() {
-        ModelData modelData = new ModelData();
-        ModelPartData modelPartData = modelData.getRoot();
-        ModelPartData modelPartData2 = modelPartData.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 0).cuboid(-2.0F, -6.0F, -1.5F, 4.0F, 6.0F, 3.0F), ModelTransform.NONE);
-        modelPartData2.addChild(EntityModelPartNames.BEAK, ModelPartBuilder.create().uv(14, 0).cuboid(-2.0F, -4.0F, -3.5F, 4.0F, 2.0F, 2.0F), ModelTransform.NONE);
-        modelPartData2.addChild("red_thing", ModelPartBuilder.create().uv(14, 4).cuboid(-1.0F, -2.0F, -2.5F, 2.0F, 2.0F, 2.0F), ModelTransform.NONE);
-        return TexturedModelData.of(modelData, 64, 32);
+        return ChickenEntityModel.getTexturedModelData();
     }
 
     public Vector3f getHeadSizeInPixels() {
@@ -35,11 +32,22 @@ public class ChickenHeadEntityModel extends SkullBlockEntityModel implements Hea
     }
 
     public void setHeadRotation(float animationProgress, float yaw, float pitch) {
-        this.head.yaw = yaw * 0.017453292F;
-        this.head.pitch = pitch * 0.017453292F;
+        yaw = yaw * 0.017453292f;
+        pitch = pitch * 0.017453292f;
+        float offsetZ = 0.5f;
+        this.head.setPivot(0.0f, 0.0f, 0.0f);
+        this.beak.setPivot(0.0f, 0.0f, 0.0f);
+        this.wattle.setPivot(0.0f, 0.0f, 0.0f);
+        this.head.translate(new Vector3f(offsetZ * MathHelper.sin(yaw), 0, offsetZ * MathHelper.cos(yaw)));
+        this.beak.translate(new Vector3f(offsetZ * MathHelper.sin(yaw), 0, offsetZ * MathHelper.cos(yaw)));
+        this.wattle.translate(new Vector3f(offsetZ * MathHelper.sin(yaw), 0, offsetZ * MathHelper.cos(yaw)));
+        this.head.yaw = this.beak.yaw = this.wattle.yaw = yaw;
+        this.head.pitch = this.beak.pitch = this.wattle.pitch = pitch;
     }
 
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
         this.head.render(matrices, vertices, light, overlay, red, green, blue, alpha);
+        this.beak.render(matrices, vertices, light, overlay, red, green, blue, alpha);
+        this.wattle.render(matrices, vertices, light, overlay, red, green, blue, alpha);
     }
 }
