@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.block.entity.SkullBlockEntityModel;
+import net.minecraft.client.render.entity.model.AxolotlEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
@@ -19,32 +20,14 @@ public class AxolotlHeadEntityModel extends SkullBlockEntityModel implements Hea
     private final ModelPart rightGills;
 
     public AxolotlHeadEntityModel(ModelPart root) {
-        this.head = root.getChild(EntityModelPartNames.HEAD);
+        this.head = root.getChild(EntityModelPartNames.BODY).getChild(EntityModelPartNames.HEAD);
         this.topGills = this.head.getChild(EntityModelPartNames.TOP_GILLS);
         this.leftGills = this.head.getChild(EntityModelPartNames.LEFT_GILLS);
         this.rightGills = this.head.getChild(EntityModelPartNames.RIGHT_GILLS);
     }
 
     public static TexturedModelData getTexturedModelData() {
-        ModelData modelData = new ModelData();
-        ModelPartData modelPartData = modelData.getRoot();
-        Dilation dilation = new Dilation(0.001F);
-        ModelPartData modelPartData2 = modelPartData.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 1).cuboid(-4.0F, -5.0F, -2.5F, 8.0F, 5.0F, 5.0F, dilation), ModelTransform.NONE);
-        ModelPartBuilder modelPartBuilder = ModelPartBuilder.create().uv(3, 37).cuboid(-4.0F, -3.0F, 0.0F, 8.0F, 3.0F, 0.0F, dilation);
-        ModelPartBuilder modelPartBuilder2 = ModelPartBuilder.create().uv(0, 40).cuboid(-3.0F, -7.0F, 0.0F, 3.0F, 7.0F, 0.0F, dilation);
-        ModelPartBuilder modelPartBuilder3 = ModelPartBuilder.create().uv(11, 40).cuboid(0.0F, -7.0F, 0.0F, 3.0F, 7.0F, 0.0F, dilation);
-        modelPartData2.addChild(EntityModelPartNames.TOP_GILLS, modelPartBuilder, ModelTransform.of(0.0F, -5.0F, 1.5F, 0.3926991F, 0, 0));
-        modelPartData2.addChild(EntityModelPartNames.LEFT_GILLS, modelPartBuilder2, ModelTransform.of(-4.0F, 0.0F, 1.5F, 0.0F, -0.3926991F, 0.0F));
-        modelPartData2.addChild(EntityModelPartNames.RIGHT_GILLS, modelPartBuilder3, ModelTransform.of(4.0F, 0.0F, 1.5F, 0.0F, 0.3926991F, 0.0F));
-        return TexturedModelData.of(modelData, 64, 64);
-    }
-
-    private float lerpAngleDegrees(float start, float end) {
-        return this.lerpAngleDegrees(0.05F, start, end);
-    }
-
-    private float lerpAngleDegrees(float delta, float start, float end) {
-        return MathHelper.lerpAngleDegrees(delta, start, end);
+        return AxolotlEntityModel.getTexturedModelData();
     }
 
     public Vector3f getHeadSizeInPixels() {
@@ -52,16 +35,20 @@ public class AxolotlHeadEntityModel extends SkullBlockEntityModel implements Hea
     }
 
     public void setHeadRotation(float animationProgress, float yaw, float pitch) {
-        float f = animationProgress * 0.11F;
-//        float g = MathHelper.cos(f);
-        this.head.pitch = pitch * 0.017453292F;
-        this.head.yaw = yaw * 0.017453292F;
-//        this.topGills.pitch = this.lerpAngleDegrees(this.topGills.pitch, 0.6F - 0.08F * (g * g + 2.0F * MathHelper.sin(f)));
-//        this.leftGills.yaw = this.lerpAngleDegrees(this.leftGills.yaw, -this.topGills.pitch);
-//        this.rightGills.yaw = this.lerpAngleDegrees(this.rightGills.yaw, -this.leftGills.yaw);
+        yaw = yaw * 0.017453292f;
+        pitch = pitch * 0.017453292f;
+        float offsetZ = 2.5f;
+        this.head.setPivot(0.0f, 0.0f, 0.0f);
+        this.head.translate(new Vector3f(offsetZ * MathHelper.sin(yaw), 0, offsetZ * MathHelper.cos(yaw)));
+        this.head.pitch = pitch;
+        this.head.yaw = yaw;
+        this.topGills.pitch = 30.0f * 0.017453292f;
+        this.leftGills.yaw = -45.0f * 0.017453292f;
+        this.rightGills.yaw = 45.0f * 0.017453292f;
     }
 
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
+        matrices.translate(0.0F, -0.125f, 0.0F);
         this.head.render(matrices, vertices, light, overlay, red, green, blue, alpha);
     }
 }
