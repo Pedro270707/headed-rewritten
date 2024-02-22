@@ -15,13 +15,17 @@ public class EntityCopyHeadEntityModel extends SkullBlockEntityModel implements 
     private final Vector3f size;
     private final float yaw;
     private final float pitch;
+    private final float scale;
 
     public EntityCopyHeadEntityModel(ModelPart root, float offsetY, Vector3f size) {
         this(root, size, 0, offsetY, 0, 0, 0);
     }
 
-
     public EntityCopyHeadEntityModel(ModelPart root, Vector3f size, float offsetX, float offsetY, float offsetZ, float yaw, float pitch) {
+        this(root, size, offsetX, offsetY, offsetZ, yaw, pitch, 1.0f);
+    }
+
+    public EntityCopyHeadEntityModel(ModelPart root, Vector3f size, float offsetX, float offsetY, float offsetZ, float yaw, float pitch, float scale) {
         this.root = root;
         this.offsetX = offsetX;
         this.offsetY = offsetY;
@@ -29,6 +33,7 @@ public class EntityCopyHeadEntityModel extends SkullBlockEntityModel implements 
         this.size = size;
         this.yaw = yaw;
         this.pitch = pitch;
+        this.scale = scale;
     }
 
     @Override
@@ -47,6 +52,7 @@ public class EntityCopyHeadEntityModel extends SkullBlockEntityModel implements 
 
     @Override
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
+        matrices.scale(this.scale, this.scale, this.scale);
         this.root.render(matrices, vertices, light, overlay, red, green, blue, alpha);
     }
 }
